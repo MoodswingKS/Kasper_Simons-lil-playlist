@@ -1,3 +1,9 @@
+html {
+  position: relative;
+  min-height: 100%;
+
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +11,50 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/*   
+    HTML Global CSS
+*/
+
+.footer {
+  height: 50px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.header {
+  height: 50px;
+  text-align: center;
+}
+
+
+/*
+  COMPONENTS
+*/
+
+
+.addItemComponent {
+  width: 100%;
+  height: 200px;
+  background-color: aquamarine;
+}
+
+.itemStateComponent {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50px;
+}
+
+.listItem {
+  list-style-type: none;
 }
