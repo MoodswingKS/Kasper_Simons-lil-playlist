@@ -1,12 +1,19 @@
 import ListItem from './ListItem'
 
-const List = () => {
+const List = (props) => {
+    const listArray = props.data.map(
+        item => <ListItem   key={item.id} 
+                            name={item.name} 
+                            artist={item.artist}
+                            genre={item.genre}
+                            rating={item.rating} 
+                />
+    )
+
     return(
         <div>
             <ul>
-                <ListItem />
-                <ListItem />
-                <ListItem />
+                {listArray}
             </ul>
         </div>
     )

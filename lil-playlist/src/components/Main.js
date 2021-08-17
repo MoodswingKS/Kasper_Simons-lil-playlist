@@ -1,17 +1,23 @@
-import {Component} from 'react'
 import AddItem from './AddItem'
 import List from './List'
 
-class Main extends Component {
+// needs to be changed into hook later
+import { connect } from 'react-redux'
 
-    render() {
-        return( 
-            <div>
-                <AddItem />
-                <List />
-            </div>
-        )
+const Main = ({ item, list }) => {
+    return (
+        <div>
+            <AddItem data={item} />
+            <List data={list} />
+        </div>
+    )
+}
+
+const mapStateToProps = state => {
+    return {
+        list: state.playlist.list,
+        item: state.playlist.item
     }
 }
 
-export default Main
+export default connect(mapStateToProps)(Main)
