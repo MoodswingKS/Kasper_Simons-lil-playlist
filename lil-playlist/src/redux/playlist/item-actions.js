@@ -1,19 +1,24 @@
 import * as actionTypes from './item-types'
 
-export const addItem = (itemId) => {
+export const addItemToList = (key, name, artist, genre, rating) => {
+    
     return {
         type: actionTypes.ADD_ITEM,
         payload: {
-            id: itemId
+            id: key,
+            name: name,
+            artist: artist,
+            genre: genre,
+            rating: rating
         }
     }
 }
 
-export const makeItem = (itemId, name, artist, genre, rating) => {
+export const makeItem = (key, name, artist, genre, rating) => {
     return {
         type: actionTypes.MAKE_ITEM,
         payload: {
-            id: itemId,
+            id: key,
             name: name,
             artist: artist,
             genre: genre,

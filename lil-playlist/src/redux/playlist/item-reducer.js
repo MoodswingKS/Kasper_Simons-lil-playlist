@@ -13,7 +13,23 @@ const INITIAL_STATE = {
 const itemReducer = (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case actionTypes.ADD_ITEM:
-            return {}
+            // Get the items data from array
+            const listItem = state.list.find(song => song.name === action.payload.name ? true : false)
+            
+            return {
+                ...state,
+                list: listItem 
+                    ? state.list.map((item) => 
+                        item.name === action.payload.name 
+                        ? {...item, rating: item.rating} 
+                        : item)
+                    : [...state.list, { ...listItem, rating: listItem.rating }]
+            }
+        // case actionTypes.DELETE_ITEM:
+        //     return {
+        //         ...state,
+        //         list: state.list.filter((item) => item.id !== action.payload.id)
+        //     }
         case actionTypes.MAKE_ITEM:
             return {}
         case actionTypes.SHOW_ITEM:

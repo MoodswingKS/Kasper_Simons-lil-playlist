@@ -1,9 +1,13 @@
 import { Component } from 'react'
+import { addItemToList } from '../redux/playlist/item-actions'
+import { v4 as uuidv4 } from 'uuid';
+import mapDispatchToProps from '../redux/playlist/item-dispatch';
 
 class AddItem extends Component {
     constructor() {
         super()
         this.state = {
+            keyInput: '',
             nameInput: "",
             artistInput: "",
             genreInput: "",
@@ -11,6 +15,7 @@ class AddItem extends Component {
         }
     }
 
+    
     render() {
         const nameValue = event => {
             this.setState({
@@ -33,10 +38,16 @@ class AddItem extends Component {
             })
         }
 
+        const addItemToL = () => {
+            const keyValue = uuidv4()
+            addItemToList(keyValue, nameValue, artistValue, genreValue, ratingValue)
+            mapDispatchToProps(keyValue, nameValue, artistValue, genreValue, ratingValue)
+        }
+
         const onSubmit = e => {
             e.preventDefault()
             if (this.state.textField !== "") {
-                this.props.onSubmit(this.state.nameInput, this.state.artistInput, this.state.genreInput, this.state.ratingInput)
+                this.setState({ keyValue: "" })
                 this.setState({ nameInput: "" })
                 this.setState({ artistInput: "" })
                 this.setState({ genreInput: "" })
@@ -81,11 +92,14 @@ class AddItem extends Component {
                         value={this.state.ratingInput}
                     ></input>
                 
-                    <button><h2>+</h2></button>
+                    <button onClick={addItemToL}>
+                        <h2>+</h2>
+                    </button>
                 </form>
             </div>
         )
     }
 }
+
 
 export default AddItem

@@ -5,7 +5,7 @@ const ListItem = (item) => {
                 Track: {item.name} |
                 Artist: {item.artist} |
                 Genre: {item.genre} |
-                Rating: {item.rating} |
+                Rating: {item.rating}
                 <hr />
             </span>
         </li>
