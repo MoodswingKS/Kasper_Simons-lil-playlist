@@ -86,7 +86,6 @@ class AddItem extends Component {
                         <option value='Rock'>Rock</option>
                         <option value='DnB'>DnB</option>
                         <option value='Techno'>Techno</option>
-                        <option value='French-core'>French-core</option>
                         <option value='Other'>Other</option>
                     </select>
 ​

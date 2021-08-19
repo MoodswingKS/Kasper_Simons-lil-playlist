@@ -12,22 +12,17 @@ class Main extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            list: [],
-            click: props.click
+            list: []
         }
     }
 
     render() { 
-        const filter = () => {
-            console.log('we are filtering ')
-
-        }
 
         return (
         <div>
             <AddItem data={this.props.item} />
             <List   data={this.props.list}
-                    filter={filter}  />
+                      />
         </div>
     )}
 }
