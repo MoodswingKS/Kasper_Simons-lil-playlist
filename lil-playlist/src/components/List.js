@@ -1,6 +1,9 @@
+import Categories from './Categories'
 import ListItem from './ListItem'
 
-const List = (props) => {
+const List = (props, {filter}) => {
+
+
     const listArray = props.data.map(
         item => <ListItem   key={item.id} 
                             name={item.name} 
@@ -12,6 +15,7 @@ const List = (props) => {
 
     return(
         <div>
+            <Categories filter={filter} />
             <ul>
                 {listArray}
             </ul>

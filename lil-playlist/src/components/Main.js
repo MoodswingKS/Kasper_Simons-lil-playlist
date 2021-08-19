@@ -1,16 +1,35 @@
 import AddItem from './AddItem'
 import List from './List'
+import { Component } from 'react'
 
 // needs to be changed into hook later
 import { connect } from 'react-redux'
+// import { filterList } from '../redux/playlist/item-actions'
+// import mapDispatchToProps from '../redux/playlist/item-dispatch'
 
-const Main = ({ item, list }) => {
-    return (
+
+class Main extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            list: [],
+            click: props.click
+        }
+    }
+
+    render() { 
+        const filter = () => {
+            console.log('we are filtering ')
+
+        }
+
+        return (
         <div>
-            <AddItem data={item} />
-            <List data={list} />
+            <AddItem data={this.props.item} />
+            <List   data={this.props.list}
+                    filter={filter}  />
         </div>
-    )
+    )}
 }
 
 const mapStateToProps = state => {

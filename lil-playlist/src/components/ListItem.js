@@ -1,13 +1,18 @@
 const ListItem = (item) => {
-    return(
+    return (
         <li className="listItem">
-            <span>
-                Track: {item.name} |
-                Artist: {item.artist} |
-                Genre: {item.genre} |
-                Rating: {item.rating}
-                <hr />
-            </span>
+            <div className="name-song">
+                {item.name}
+            </div>
+            <div className="name-artist">
+                {item.artist}
+            </div>
+            <div className="genre">
+                {item.genre}
+            </div>
+            <div className="rating">
+                {item.rating}
+            </div>
         </li>
     )
 }

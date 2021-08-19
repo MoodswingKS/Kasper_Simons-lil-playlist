@@ -1,11 +1,12 @@
 import { Component } from 'react'
+import { connect } from 'react-redux';
 import { addItemToList } from '../redux/playlist/item-actions'
 import { v4 as uuidv4 } from 'uuid';
 import mapDispatchToProps from '../redux/playlist/item-dispatch';
 
 class AddItem extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             keyInput: '',
             nameInput: "",
@@ -15,7 +16,6 @@ class AddItem extends Component {
         }
     }
 
-    
     render() {
         const nameValue = event => {
             this.setState({
@@ -38,14 +38,20 @@ class AddItem extends Component {
             })
         }
 
-        const addItemToL = () => {
-            const keyValue = uuidv4()
-            addItemToList(keyValue, nameValue, artistValue, genreValue, ratingValue)
-            mapDispatchToProps(keyValue, nameValue, artistValue, genreValue, ratingValue)
+        const addItemToL = (nameValue, artistValue, genreValue, ratingValue) => {
+            const { dispatch } = this.props;
+            const key = uuidv4();
+            const name = nameValue;
+            const artist = artistValue;
+            const genre = genreValue;
+            const rating = ratingValue;
+            dispatch(addItemToList(key, name, artist, genre, rating));
+            dispatch(mapDispatchToProps(key, name, artist, genre, rating));
         }
 
         const onSubmit = e => {
             e.preventDefault()
+            addItemToL(this.state.nameInput, this.state.artistInput, this.state.genreInput, this.state.ratingInput);
             if (this.state.textField !== "") {
                 this.setState({ keyValue: "" })
                 this.setState({ nameInput: "" })
@@ -65,25 +71,25 @@ class AddItem extends Component {
                         onChange={nameValue}
                         value={this.state.nameInput}
                     ></input>
-
+​
                     <input
                         placeholder="Artist name"
                         type="text"
                         onChange={artistValue}
                         value={this.state.artistInput}
                     ></input>
-
+​
                     <select
-                        value={this.state.genreInput} 
+                        value={this.state.genreInput}
                         onChange={genreValue}>
-                            <option value='Genre'>Genre?</option>
-                            <option value='Rock'>Rock</option>
-                            <option value='DnB'>DnB</option>
-                            <option value='Techno'>Techno</option>
-                            <option value='French-core'>French-core</option>
-                            <option value='Other'>Other</option>
+                        <option value='Genre'>Genre?</option>
+                        <option value='Rock'>Rock</option>
+                        <option value='DnB'>DnB</option>
+                        <option value='Techno'>Techno</option>
+                        <option value='French-core'>French-core</option>
+                        <option value='Other'>Other</option>
                     </select>
-
+​
                     <input
                         placeholder="Rating"
                         type="number"
@@ -91,8 +97,8 @@ class AddItem extends Component {
                         onChange={ratingValue}
                         value={this.state.ratingInput}
                     ></input>
-                
-                    <button onClick={addItemToL}>
+​
+                    <button type="submit">
                         <h2>+</h2>
                     </button>
                 </form>
@@ -102,4 +108,4 @@ class AddItem extends Component {
 }
 
 
-export default AddItem
+export default connect()(AddItem);
