@@ -1,7 +1,5 @@
 import * as actionTypes from './item-types'
 
-
-
 const INITIAL_STATE = {
     list: [
         { id: 1, name: 'Numb', artist: 'Linkin Park', genre: 'Rock', rating: 4 },

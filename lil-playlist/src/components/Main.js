@@ -1,12 +1,7 @@
 import AddItem from './AddItem'
 import List from './List'
 import { Component } from 'react'
-
-// needs to be changed into hook later
 import { connect } from 'react-redux'
-// import { filterList } from '../redux/playlist/item-actions'
-// import mapDispatchToProps from '../redux/playlist/item-dispatch'
-
 
 class Main extends Component {
     constructor(props) {
@@ -17,12 +12,10 @@ class Main extends Component {
     }
 
     render() { 
-
         return (
         <div>
             <AddItem data={this.props.item} />
-            <List   data={this.props.list}
-                      />
+            <List   data={this.props.list} />
         </div>
     )}
 }

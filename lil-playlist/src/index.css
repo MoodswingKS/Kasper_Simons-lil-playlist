@@ -1,7 +1,9 @@
 html {
   position: relative;
   min-height: 100%;
-
+  max-width: 100%;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 body {
@@ -27,6 +29,7 @@ code {
 .footer {
   height: 50px;
   position: absolute;
+  text-align: center;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -39,6 +42,7 @@ code {
 
 ul {
   padding: 0;
+  padding-left: 5px;
 }
 
 /*
@@ -95,4 +99,12 @@ ul {
   grid-auto-flow: row;
   grid-template-areas:
   "name-song name-artist genre rating";
+}
+
+.about {
+  text-align: center;
+}
+
+.navigation {
+  text-align: center;
 }

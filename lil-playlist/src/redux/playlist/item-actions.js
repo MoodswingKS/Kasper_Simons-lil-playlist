@@ -22,7 +22,6 @@ export const filterList = (listName, name, artist, genre, rating) => {
             artist: artist,
             genre: genre,
             rating: rating
-
         }
     }
 }

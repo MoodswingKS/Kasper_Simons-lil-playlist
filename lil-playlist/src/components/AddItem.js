@@ -106,5 +106,4 @@ class AddItem extends Component {
     }
 }
 
-
 export default connect()(AddItem);
